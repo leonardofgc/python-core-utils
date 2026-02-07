@@ -5,7 +5,9 @@ from core_utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-EMAIL_REGEX = re.compile(r"^[\w\.-]+@[\w\.-]+\.\w+$")
+Number = Union[int, float]
+
+EMAIL_REGEX: re.Pattern[str] =  re.compile(r"^[\w\.-]+@[\w\.-]+\.\w+$")
 
 def validate_not_empty(value: str, field_name: str) -> str:
     """
@@ -29,7 +31,7 @@ def validate_not_empty(value: str, field_name: str) -> str:
     return value
 
 
-def validate_positive_number(value: Union[int, float], field_name: str) -> Union[int, float]:
+def validate_positive_number(value: Number, field_name: str) -> Number:
     """
     Garante que um número é positivo (> 0).
     """
