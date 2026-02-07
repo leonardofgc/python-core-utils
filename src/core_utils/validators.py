@@ -1,5 +1,6 @@
-from typing import Union
 import re
+from typing import Union
+
 from core_utils.exceptions import ValidationError
 from core_utils.logger import get_logger
 
@@ -7,7 +8,8 @@ logger = get_logger(__name__)
 
 Number = Union[int, float]
 
-EMAIL_REGEX: re.Pattern[str] =  re.compile(r"^[\w\.-]+@[\w\.-]+\.\w+$")
+EMAIL_REGEX: re.Pattern[str] = re.compile(r"^[\w\.-]+@[\w\.-]+\.\w+$")
+
 
 def validate_not_empty(value: str, field_name: str) -> str:
     """
@@ -27,7 +29,7 @@ def validate_not_empty(value: str, field_name: str) -> str:
     if not value or not value.strip():
         logger.warning("Campo vazio detectado: %s", field_name)
         raise ValidationError(f"O campo '{field_name}' não pode ser vazio.")
-    
+
     return value
 
 
@@ -39,8 +41,9 @@ def validate_positive_number(value: Number, field_name: str) -> Number:
     if value <= 0:
         logger.warning("Número não positivo para %s: %s", field_name, value)
         raise ValidationError(f"O campo '{field_name}' deve ser um número positivo.")
-    
+
     return value
+
 
 def validate_email(email: str) -> str:
     """
@@ -50,5 +53,5 @@ def validate_email(email: str) -> str:
     if not EMAIL_REGEX.match(email):
         logger.warning("Email inválido recebido: %s", email)
         raise ValidationError("Email Inválido")
-    
+
     return email

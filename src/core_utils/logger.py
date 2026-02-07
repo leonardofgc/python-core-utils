@@ -1,8 +1,9 @@
-import sys
 import logging
+import sys
 from typing import Optional, TextIO
 
 _LOGGER_CONFIGURED = False
+
 
 def _configure_root_logger(level: int = logging.INFO) -> None:
     """
@@ -13,10 +14,10 @@ def _configure_root_logger(level: int = logging.INFO) -> None:
 
     if _LOGGER_CONFIGURED:
         return
-    
+
     formatter = logging.Formatter(
         fmt="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
-        datefmt="%Y-%M-%d %H:%M:%S"
+        datefmt="%Y-%M-%d %H:%M:%S",
     )
 
     handler: logging.StreamHandler[TextIO] = logging.StreamHandler(stream=sys.stderr)
@@ -29,7 +30,7 @@ def _configure_root_logger(level: int = logging.INFO) -> None:
     __LOGGER_CONFIGURED = True
 
 
-def get_logger(name: Optional[str] = None) ->logging.Logger:
+def get_logger(name: Optional[str] = None) -> logging.Logger:
     """
     Retorna um logger configurado.
     """
