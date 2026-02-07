@@ -15,6 +15,13 @@ def _configure_root_logger(level: int = logging.INFO) -> None:
     if _LOGGER_CONFIGURED:
         return
 
+    root_logger: logging.Logger = logging.getLogger()
+
+    if root_logger.handlers:
+        root_logger.setLevel(level)
+        __LOGGER_CONFIGURED = True
+        return
+
     formatter = logging.Formatter(
         fmt="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
         datefmt="%Y-%M-%d %H:%M:%S",
@@ -23,7 +30,6 @@ def _configure_root_logger(level: int = logging.INFO) -> None:
     handler: logging.StreamHandler[TextIO] = logging.StreamHandler(stream=sys.stderr)
     handler.setFormatter(formatter)
 
-    root_logger: logging.Logger = logging.getLogger()
     root_logger.setLevel(level)
     root_logger.addHandler(handler)
 
