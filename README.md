@@ -1,15 +1,20 @@
 # Python Core Utils
 
-Biblioteca base em Python com foco em boas práticas, validação de dados e arquitetura reutilizável.
+Base Python library focused on best practices, data validation, and reusable architecture.
 
-## Estrutura
+## Project Structure
 
 - Exceptions customizadas
 - Validators reutilizáveis
 - Testes automatizados com Pytest
 - Layout moderno com `src/`
 
-## Rodando os testes
+## Running tests
 
 ```bash
 pytest
+
+## Versions
+
+### v0.1.0
+- Initial release
