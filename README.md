@@ -14,6 +14,8 @@ Base Python library focused on best practices, data validation, and reusable arc
 ```bash
 pytest
 
+```
+
 ## Versions
 
 ### v0.1.0
